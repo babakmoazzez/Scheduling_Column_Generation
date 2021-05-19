@@ -1,5 +1,11 @@
 # Scheduling_Column_Generation
 
+to execute, do python main.py
+
+Note that this code is to demonstrate coding skills.
+
+Problem Description:
+
 In this problem, a staff roster will be created for a call center. A day schedule for call-center extends from 8:00AM through 8:00PM. We divide this into 48 15-minute periods since an estimate is made for the number of incoming calls per minute for every 15 minutes. The number of required operators can be determined per 15 minutes with the Erlang-C queue model. The following rules apply when creating a shift for an operator:
 
 • A day shift cannot exceed 9 hours, but is not allowed to be shorter than 4 hours.
