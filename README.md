@@ -37,10 +37,13 @@ Master Problem:
 min  sum_s c_s * x_s
 
 s.t. sum_s a_ts * x_s >= d_t  for all t=1:48
-     x_s >= 0 , Integer for sin S
+
+   x_s >= 0 , Integer for sin S
      
 x_s is number of operators working shift s 
+
 a_ts = 1 if in shift s, operator has to work in period t and 0 otherwise
+
 S is the set of all shifts
 
 reduced cost: sigma_s = cs − pi * A_s =  cs − sum_t pi_t * a_ts
@@ -48,6 +51,7 @@ reduced cost: sigma_s = cs − pi * A_s =  cs − sum_t pi_t * a_ts
 if we make a new variable w_t = 1 if operator is working in shift t and 0 otherwise, then the subproblem is 
 
 min  c_s - sum_t pi_t * w_t
+
 s.t. w is a pattern
 
 Note that cs = sum_t w_t and hence, c_s - sum_t pi_t * w_t = sum_t w_t - sum_t pi_t * w_t = sum_t w_t * (1-pi_t)
@@ -55,14 +59,17 @@ Note that cs = sum_t w_t and hence, c_s - sum_t pi_t * w_t = sum_t w_t - sum_t p
 So the subproblem is 
 
 min  sum_t w_t * (1-pi_t)
+
 s.t. w is a pattern
 
 Constraints for w being a pattern:
 
 a minimum of 4 and a maximum of 9 hours of work in a shift.
+
 16 <= sum_(t=1:48) w_t  <=36 
 
 p_t = 1 if you have pause at time t, 0 otherwise
+
 y_t = 1 if you are present at time t (work or break), 0 otherwise
 
 w_t + p_t = y_t, for t = 1:48, (work + pause = present)
@@ -83,7 +90,7 @@ Everyone has 1 or 2 breaks per day, so there are a minimum of 2 and a maximum of
 
 2 <= sum_(t=2:48) |p_t - p_(t−1)| <= 4
 
-num of working periods    num of 15 min break 
+     num of working periods    num of 15 min break 
 
         23-26                   3   
         
@@ -94,6 +101,7 @@ num of working periods    num of 15 min break
 So, number of 15-min breaks is determined by: floor(number of working periods / 10.55)
 
 sum_(t=1:48) p_t < (sum_(t=1:48) w_t)/10.55
+
 sum_(t=1:48) p_t > (sum_(t=1:48) w_t)/10.55 - 1
 
 you always work max 3.25 hours back to back
@@ -103,15 +111,24 @@ sum_(j=t:t+13) w_j < 14
 So the subproblem is
 
 min  sum_t w_t * (1-pi_t)
+
 s.t. 16 <= sum_(t=1:48) w_t  <=36 
-     w_t + p_t = y_t, for t = 1:48, (work + pause = present)
-     sum_(t=2:48) |y_t - y_(t−1)| + w_1 + w_48 = 2
-     p_1 = p_48 = 0
-     2 <= sum_(t=2:48) |p_t - p_(t−1)| <= 4
-     sum_(t=1:48) p_t < (sum_(t=1:48) w_t)/10.55
-     sum_(t=1:48) p_t > (sum_(t=1:48) w_t)/10.55 - 1
-     sum_(j=t:t+13) w_j < 14 for t=1:48-13
-     w_t, y_t, p_t binary for t=1:48
+
+   w_t + p_t = y_t, for t = 1:48, (work + pause = present)
+   
+   sum_(t=2:48) |y_t - y_(t−1)| + w_1 + w_48 = 2
+   
+   p_1 = p_48 = 0
+   
+   2 <= sum_(t=2:48) |p_t - p_(t−1)| <= 4
+   
+   sum_(t=1:48) p_t < (sum_(t=1:48) w_t)/10.55
+   
+   sum_(t=1:48) p_t > (sum_(t=1:48) w_t)/10.55 - 1
+   
+   sum_(j=t:t+13) w_j < 14 for t=1:48-13
+   
+   w_t, y_t, p_t binary for t=1:48
      
 (absolute value constraints can be linearized easily)    
 
