@@ -2,7 +2,7 @@
 
 to execute, do python main.py
 
-Note that this code is to demonstrate coding skills.
+Note that this code is to demonstrate coding skills only.
 
 Problem Description:
 
