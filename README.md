@@ -98,7 +98,6 @@ s.t. 16 <= sum_(t=1:48) w_t  <=36
      sum_(t=1:48) p_t < (sum_(t=1:48) w_t)/10.55
      sum_(t=1:48) p_t > (sum_(t=1:48) w_t)/10.55 - 1
      sum_(j=t:t+13) w_j < 14 for t=1:48-13
-     
      w_t, y_t, p_t binary for t=1:48
      
 (absolute value constraints can be linearized easily)    
